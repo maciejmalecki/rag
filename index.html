@@ -8,16 +8,66 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/night.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="css/custom.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-markdown data-separator-vertical="^--$">
+					<script type="text/template">
+						# RAG
+						---
+						Introduce yourself<!-- .element: class="r-fit-text"-->
+						---
+						<!-- .slide: id="open-ai"-->
+						OpenAI/GPT slide<!-- .element: class="r-fit-text"-->
+						---
+						## Chat GPT weaknesses
+
+						* Hallucinations
+						* Privacy
+						* Knowledge cutoff
+						---
+						How can we address that?
+
+						* Own model?
+						* Trainings?
+						---
+						How does chatGPT work?
+
+						* tokenization
+						* transformer
+						* embeddings
+						* neural network
+						---
+						The power of in context prompting
+
+						* Context sizes
+						* Pasting documents
+						* How about limitations
+						* Searching and delivering the snippets
+						---
+						The best comes!
+
+						embeddings
+
+						vector db
+						---
+						So we have a RAG
+						---
+						RAG over AWS
+
+						Bedrock (LLM)
+						Embeddings LLM (Titan text embeddings)
+						AWS Kendra
+						OpenSearch Serverless
+						---
+						Summary
+					</script>
 			</div>
 		</div>
 
@@ -25,15 +75,27 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
+				width: 1200,
+				slideNumber: 'c/t',
+				mathjax2: {
+					config: 'TeX-AMS_HTML-full',
+					TeX: {
+						Macros: {
+							R: '\\mathbb{R}',
+							set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+						}
+					}
+				},
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax2 ]
 			});
 		</script>
 	</body>
