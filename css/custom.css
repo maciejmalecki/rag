@@ -16,3 +16,6 @@
 .reveal section .subtitle {
     font-size: 2rem;
 }
+.reveal section .img-reduce {
+    height: 500px;
+}

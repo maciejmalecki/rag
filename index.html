@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Generative AI: a real life applications</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -19,12 +19,23 @@
 			<div class="slides">
 				<section data-markdown data-separator-vertical="^--$">
 					<script type="text/template">
-						# RAG
+						<!-- .slide: data-background-image="img/hal.jpg"-->
+						Generative<!-- .element: class="r-fit-text"-->
+
+						Artificial Intelligence<!-- .element: class="r-fit-text"-->
+
+						a real life applications<!-- .element: class=" cyan"-->	
 						---
 						Introduce yourself<!-- .element: class="r-fit-text"-->
 						---
 						<!-- .slide: id="open-ai"-->
 						OpenAI/GPT slide<!-- .element: class="r-fit-text"-->
+						---
+						How does chatGPT work?
+
+						* transformer architecture of DNN
+						* tokenization
+						* embeddings
 						---
 						## Chat GPT weaknesses
 
@@ -36,13 +47,6 @@
 
 						* Own model?
 						* Trainings?
-						---
-						How does chatGPT work?
-
-						* tokenization
-						* transformer
-						* embeddings
-						* neural network
 						---
 						The power of in context prompting
 
@@ -57,14 +61,19 @@
 
 						vector db
 						---
-						So we have a RAG
+						### So we have a RAG
+						![RAG](drawings/rag.excalidraw.png)<!-- .element: class="img-reduce"-->
 						---
-						RAG over AWS
-
-						Bedrock (LLM)
-						Embeddings LLM (Titan text embeddings)
-						AWS Kendra
-						OpenSearch Serverless
+						### RAG over AWS
+						![RAG over AWS complete](drawings/rag-aws-all.excalidraw.png)<!-- .element: class="img-reduce"-->
+						--
+						<!-- .slide: data-transition="convex"-->
+						### Indexing
+						![RAG over AWS complete](drawings/rag-aws-indexing.excalidraw.png)<!-- .element: class="img-reduce"-->
+						--
+						<!-- .slide: data-transition="convex"-->
+						### Conversation
+						![RAG over AWS complete](drawings/rag-aws-conversation.excalidraw.png)<!-- .element: class="img-reduce"-->
 						---
 						Summary
 					</script>
@@ -83,6 +92,7 @@
 			Reveal.initialize({
 				hash: true,
 				width: 1200,
+				height: 700,
 				slideNumber: 'c/t',
 				mathjax2: {
 					config: 'TeX-AMS_HTML-full',
