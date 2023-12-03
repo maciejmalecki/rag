@@ -29,26 +29,14 @@
 
 						Artificial Intelligence<!-- .element: class="r-fit-text"-->
 
-						a real life applications<!-- .element: class=" cyan"-->	
+						a real life applications<!-- .element: class="cyan"-->	
 						---
 						Introduce yourself<!-- .element: class="r-fit-text"-->
 						---
-						<!-- .slide: id="open-ai"-->
+						<!-- .slide: id="open-ai" data-background-color="rgba(0, 255, 255, 0.2)"-->
 						<div class="r-hstack gap1">
 							<img src="img/ai-2001.png" alt="ai" class="img-reduce">
-							<div><ul>
-								<li>1951: SNARC - first neural network machine</li>
-								<li>1982: first recurrant neural network</li>
-								<li>1997: Deep Blue defeats Garry Kasparov</li>
-								<li>2003: First feed-forward NN</li>
-								<li>2006: Deep beliefs networks</li>
-								<li>2015: Attention model</li>
-								<li>2017: Transformer</li>
-								<li>2020: GPT-3</li>
-								<li>2021: DALL-E</li>
-								<li>2022: chatGPT / GPT-3.5</li>
-								<li>2023: GPT-4, Anthropic's Claude, Titan, LLAMA</li>
-							</ul></div>
+							<img src="img/openai-icon.png" alt="" class="img-reduce">
 						</div>
 						---
 						<!-- .slide: data-background-image="img/2001.jpg" data-background-opacity="0.30"-->
@@ -84,19 +72,15 @@
 						<!-- .slide: data-background-image="img/lips-read.jpg" data-background-opacity="0.25"-->
 						chatGPT weaknesses<!-- .element: class="r-fit-text"-->
 
-						* Hallucinations
-						* Lack of privacy
-						* Knowledge cutoff
-						* Lack of source tracebility
-						---
-						<!-- .slide: data-background-image="img/hal-disconnect.gif" data-background-opacity="0.25"-->
-						How can we address that?<!-- .element: class="r-fit-text"-->
-
-						* Private model
-						* Fine tuning
-						* Prompt engineering
+						* Hallucinations<!-- .element: class="up nt cyan"-->
+						* Lack of privacy<!-- .element: class="up nt"-->
+						* Knowledge cutoff<!-- .element: class="up nt cyan"-->
+						* Lack of source tracebility<!-- .element: class="up nt"-->
 						--
-						<!-- .slide: data-background-image="img/amazon-bedrock.jpg" data-background-opacity="0.5"  data-transition="convex"-->
+						<!-- .slide: data-background-image="img/hal-disconnect.gif" data-background-opacity="0.25" data-transition="convex"-->
+						Can we fix it?<!-- .element: class="r-fit-text"-->
+						--
+						<!-- .slide: data-background-image="img/amazon-bedrock.jpg" data-background-opacity="0.5" data-transition="convex"-->
 						### Amazon Bedrock
 						![Bedrock](img/amazon-bedrock.png)
 						--
@@ -110,22 +94,44 @@
 							<img src="img/bomba-without-context.png" alt="">
 							<img src="img/bomba-with-context.png" alt="" class="fragment">
 						</div>
-						---
-						The power of in context prompting
+						--
+						<!-- .slide: data-transition="convex"-->
+						![Power of PI](drawings/prompting.excalidraw.png)
+						--
+						<!-- .slide: data-transition="fast"-->
+						![Power of PI](drawings/prompting-convers.excalidraw.png)
+						--
+						<!-- .slide: data-transition="convex"-->
+						Retrieval-augmented generation<!-- .element: class="r-fit-text"-->
 
-						* Context sizes
-						* Pasting documents
-						* How about limitations
-						* Searching and delivering the snippets
-						---
-						The best comes!
+						![Interim](drawings/search.excalidraw.png)
+						--
+						<!-- .slide: data-background-image="img/lady-meme.jpg" data-background-opacity="0.25" data-transition="convex"-->
+						![Embeddings](img/embeddings.svg)<!-- .element: class="img-reduce"-->
+						--
+						<!-- .slide: data-transition="convex"-->
+						### Retrieval-augmented generation (RAG)
 
-						embeddings
-
-						vector db
-						---
-						### So we have a RAG
 						![RAG](drawings/rag.excalidraw.png)<!-- .element: class="img-reduce"-->
+						--
+						### The only piece of code today
+						```python[]
+						retriever = AmazonKendraRetriever(index_id="my-index")
+						model = ChatOpenAI(openai_api_key="foo-bar")
+						template = """Answer the question based only on the following context:
+        	{context}
+
+			Question: {question}
+        	"""
+						prompt = ChatPromptTemplate.from_template(template)
+				
+						chain = {
+							"context": itemgetter("question") | retriever,
+							"question": itemgetter("question")
+						} | prompt | model | StrOutputParser()
+				
+						result = chain.invoke({"question": query })
+						```
 						---
 						### RAG over AWS
 						![RAG over AWS complete](drawings/rag-aws-all.excalidraw.png)<!-- .element: class="img-reduce"-->

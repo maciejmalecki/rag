@@ -19,3 +19,9 @@
 .reveal section .img-reduce {
     height: 500px;
 }
+.reveal section .up {
+    text-transform: uppercase;
+}
+.reveal section .nt {
+    list-style-type: none;
+}
