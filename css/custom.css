@@ -25,3 +25,11 @@
 .reveal section .nt {
     list-style-type: none;
 }
+.logo {
+    position: fixed; /* Makes it stay in place on all slides */
+    top: 0.5em; /* Adjust the position as needed */
+    right: 0.5em; /* Adjust the position as needed */
+    width: 13em; /* Adjust the size as needed */
+    height: auto;
+    z-index: 1000; /* Ensures logo is above other elements */
+  }
