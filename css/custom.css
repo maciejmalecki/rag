@@ -25,6 +25,9 @@
 .reveal section .nt {
     list-style-type: none;
 }
+.reveal section .bg {
+    background-color: rgba(0,0,0,0.5);
+}
 .logo {
     position: fixed; /* Makes it stay in place on all slides */
     top: 0.5em; /* Adjust the position as needed */
